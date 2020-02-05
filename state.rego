@@ -20,7 +20,7 @@ allowed_location = "eu-"
 
 # Allow only if there are no differences between
 # expected and actual
-location_test {
+location_test[passed] {
 	passed := startswith(actual[location], allowed_location)
 }
 
