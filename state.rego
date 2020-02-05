@@ -16,7 +16,7 @@
 package tfstate.analysis
 
 # allowed location / country
-allowed_location = "us-"
+allowed_location = "eu-"
 
 # Allow only if there are no differences between
 # expected and actual
