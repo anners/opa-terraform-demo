@@ -20,18 +20,9 @@ allowed_location = "us-"
 
 # Allow only if there are no differences between
 # expected and actual
-test[{
-	"passed": passed,
-	"metadata" : metadata
-}] {
-	metadata := {
-		"actual_location": actual[location],
-		"allowed_location": allowed_location,
-	}
+location_test {
 	passed := startswith(actual[location], allowed_location)
 }
-
-location_test { passed := startswith(actual[location], allowed_location) }
 
 # Get service names from resources where the type
 # is google_container_cluster and set location
@@ -40,4 +31,15 @@ actual[location] {
 	res := input.resources
 	res[i].type == "google_container_cluster"
 	location := res[i].instances[_].attributes.location
+}
+
+debug[{
+	"passed": passed,
+	"metadata" : metadata
+}] {
+	metadata := {
+		"actual_location": actual[location],
+		"allowed_location": allowed_location,
+	}
+	passed := startswith(actual[location], allowed_location)
 }

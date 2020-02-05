@@ -15,6 +15,7 @@ terraform apply
 ```
 
 Once you have your state file you can run :
+
 `opa eval --input terraform.tfstate --data state.rego --format=pretty "data.tfstate.analysis.test"`
 
 For a few more examples see onetwopunch [opa-test](https://github.com/onetwopunch/opa-test).
